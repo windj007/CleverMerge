@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CleverMerge.Projects.ProjectManager">
+    <Position X="3" Y="2" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAACAAAAAghEAAgAQEAAAAAACAA=</HashCode>
+      <FileName>Projects\ProjectManager.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="CurrentProject" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="CleverMerge.Projects.Project">
+    <Position X="7.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAAQAAAAAAAAAAACAAAAAAAA=</HashCode>
+      <FileName>Projects\Project.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="ChangeHistory" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="CleverMerge.Projects.TwoSideProject">
+    <Position X="6.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Projects\TwoSideProject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CleverMerge.Projects.ManySideProject">
+    <Position X="8.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>Projects\ManySideProject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CleverMerge.Projects.Action">
+    <Position X="11.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Projects\Action.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

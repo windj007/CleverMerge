@@ -46,22 +46,40 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GUI\TwoSideComparison.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\TwoSideComparison.Designer.cs">
+      <DependentUpon>TwoSideComparison.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Projects\Action.cs" />
+    <Compile Include="Core\DisplayBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="GUI\ProjectTreeView.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="GUI\ProjectTreeView.Designer.cs">
       <DependentUpon>ProjectTreeView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Core\IPlugin.cs" />
+    <Compile Include="Core\ITree.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Core\PluginManager.cs" />
+    <Compile Include="Projects\ManySideProject.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="Projects\Project.cs" />
+    <Compile Include="Projects\ProjectManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tree\RootNode.cs" />
-    <Compile Include="Tree\TreeNode.cs" />
+    <Compile Include="Projects\TwoSideProject.cs" />
+    <EmbeddedResource Include="GUI\TwoSideComparison.resx">
+      <DependentUpon>TwoSideComparison.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -71,8 +89,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="Core\Core.cd" />
-    <None Include="Parsers\Parsers.cd" />
+    <None Include="GUI\GUI.cd" />
+    <None Include="Projects\Projects.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -82,11 +100,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Tree\Tree.cd" />
+    <None Include="Core\Core.cd" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Parsers\Cpp\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
