@@ -9,7 +9,7 @@ namespace CleverMerge.Core
     /// <summary>
     /// BaseDirectory class for all controls which display ITree content
     /// </summary>
-    public abstract class DisplayBase : Control
+    public abstract class DisplayBase : UserControl
     {
         /// <summary>
         /// Get actual content from corresponding ITree object

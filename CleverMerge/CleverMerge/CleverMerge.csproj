@@ -54,7 +54,7 @@
     </Compile>
     <Compile Include="Projects\Action.cs" />
     <Compile Include="Core\DisplayBase.cs">
-      <SubType>Component</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="GUI\ProjectTreeView.cs">
       <SubType>UserControl</SubType>
