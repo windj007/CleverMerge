@@ -108,6 +108,12 @@
     <Compile Include="Utils\AskStringForm.Designer.cs">
       <DependentUpon>AskStringForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils\PathEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Utils\PathEditor.Designer.cs">
+      <DependentUpon>PathEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utils\SerializationUtility.cs" />
     <EmbeddedResource Include="GUI\ProjectForm.resx">
       <DependentUpon>ProjectForm.cs</DependentUpon>
@@ -132,6 +138,9 @@
     </Compile>
     <EmbeddedResource Include="Utils\AskStringForm.resx">
       <DependentUpon>AskStringForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utils\PathEditor.resx">
+      <DependentUpon>PathEditor.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="GUI\GUI.cd" />
     <None Include="Projects\Projects.cd" />

@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using CleverMerge.Projects;
 
 namespace CleverMerge.GUI
 {
@@ -14,37 +15,29 @@ namespace CleverMerge.GUI
     /// </summary>
     public partial class TwoSideComparison : ComparisonBase
     {
-        public TwoSideComparison()
-        {
-            InitializeComponent();
-        }
+        #region Public properties
 
         /// <summary>
         /// DisplayBase for left branch of project
         /// </summary>
-        public CleverMerge.Core.DisplayBase LeftDisplay
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public CleverMerge.Core.DisplayBase LeftDisplay { get; private set; }
 
         /// <summary>
         /// DisplayBase for right branch of project
         /// </summary>
-        public CleverMerge.Core.DisplayBase RightDisplay
+        public CleverMerge.Core.DisplayBase RightDisplay { get; private set; }
+        
+        #endregion
+
+        public TwoSideComparison(Project project)
+            : base(project)
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
+            InitializeComponent();
+        }
+
+        public override void RefreshContent()
+        {
+
         }
     }
 }

@@ -8,6 +8,7 @@ namespace CleverMerge.Projects
     /// <summary>
     /// BaseDirectory class for all comparison projects.
     /// </summary>
+    [Serializable]
     public class Project
     {
         /// <summary>

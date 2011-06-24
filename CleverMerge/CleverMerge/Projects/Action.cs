@@ -8,6 +8,7 @@ namespace CleverMerge.Projects
     /// <summary>
     /// Base user action in project branches' editing process
     /// </summary>
+    [Serializable]
     public class Action
     {
     }

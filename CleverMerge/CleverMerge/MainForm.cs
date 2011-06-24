@@ -18,6 +18,8 @@ namespace CleverMerge
             InitializeComponent();
         }
 
+        #region Private methods
+
         /// <summary>
         /// Create window for the specified project
         /// </summary>
@@ -27,8 +29,13 @@ namespace CleverMerge
             var form = new ProjectForm(project);
             form.MdiParent = this;
             form.Show();
+            form.WindowState = FormWindowState.Maximized;
             windowsTabs.RegisterWindow(form);
         }
+        
+        #endregion
+
+        #region Menu events handlers
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -58,6 +65,9 @@ namespace CleverMerge
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ProjectManager.Instance.CloseProject();
+            Close();
         }
+        
+        #endregion
     }
 }
