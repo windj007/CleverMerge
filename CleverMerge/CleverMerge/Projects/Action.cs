@@ -5,6 +5,9 @@ using System.Text;
 
 namespace CleverMerge.Projects
 {
+    /// <summary>
+    /// Base user action in project branches' editing process
+    /// </summary>
     public class Action
     {
     }

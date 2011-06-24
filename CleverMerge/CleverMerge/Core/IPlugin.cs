@@ -41,7 +41,7 @@ namespace CleverMerge.Core
         /// Build tree representation of the specified file.
         /// </summary>
         /// <remarks>Generally that tree is similar to abstract syntax tree of the program in that file.</remarks>
-        /// <returns>Tree representing file structure</returns>
+        /// <returns>FullTree representing file structure</returns>
         ITree BuildFileTree(string fileName);
 
         /// <summary>

@@ -51,6 +51,11 @@ namespace CleverMerge.Core
         }
 
         /// <summary>
+        /// Unique identifier of that tree
+        /// </summary>
+        Guid ID { get; }
+
+        /// <summary>
         /// Change the current tree view corresponding to differences between current tree and other tree
         /// </summary>
         /// <param name="otherTree">The tree to compare to</param>

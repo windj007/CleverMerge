@@ -5,6 +5,9 @@ using System.Text;
 
 namespace CleverMerge.Projects
 {
+    /// <summary>
+    /// Project representing comparison of many branches with common base folder
+    /// </summary>
     public class ManySideProject : Project
     {
         /// <summary>

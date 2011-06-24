@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using CleverMerge.Utils;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Windows.Forms;
 
 namespace CleverMerge.Projects
 {
@@ -10,10 +14,20 @@ namespace CleverMerge.Projects
     /// </summary>
     public class ProjectManager
     {
+        #region Private fields
+
         /// <summary>
         /// Current project manager instance
         /// </summary>
         private static ProjectManager instance = null;
+
+        private List<Project> recentProjects = new List<Project>();
+        private int recentHistCount = 0;
+        private Project curProject = null;
+
+        #endregion
+
+        #region Public properties
 
         /// <summary>
         /// Current project manager instance
@@ -29,45 +43,93 @@ namespace CleverMerge.Projects
             }
         }
 
+        /// <summary>
+        /// Recent projects list
+        /// </summary>
         public IEnumerable<Project> RecentProjects
         {
             get
             {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
-
-        public int RecentHistoryCount
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
-
-        public Project CurrentProject
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
+                return recentProjects;
             }
         }
 
         /// <summary>
-        /// Open project from the specified file. Current project will be closed.
+        /// Capacity of recent projects list
+        /// </summary>
+        public int RecentHistoryCount
+        {
+            get
+            {
+                return recentHistCount;
+            }
+            set
+            {
+                if (value < 0)
+                    return;
+
+                recentHistCount = value;
+                recentProjects.Capacity = recentHistCount;
+            }
+        }
+
+        /// <summary>
+        /// Current project
+        /// </summary>
+        public Project CurrentProject
+        {
+            get
+            {
+                return curProject;
+            }
+        }
+        
+        #endregion
+
+        private ProjectManager()
+        {
+        }
+
+        #region Public methods
+
+        /// <summary>
+        /// Ask user for file name and open project from the specified file.
+        /// Current project will be closed.
         /// </summary>
         public Project OpenProject()
         {
-            throw new System.NotImplementedException();
+            // ask user for file name
+            var fileName = "";
+
+            var dialog = new OpenFileDialog();
+            dialog.Filter = "Clever merge project (*.cmp)|*.cmp";
+            dialog.CheckFileExists = true;
+            var result = dialog.ShowDialog();
+
+            if (result == DialogResult.OK)
+                fileName = dialog.FileName;
+            else
+                return null;
+
+            // load project
+            Project bufProj = null;
+
+            try
+            {
+                bufProj = SerializationUtility.DeserializeFromFile<Project>(fileName);
+            }
+            catch (SerializationException /*ex*/)
+            {
+                MessageBox.Show("File has wrong format");
+                return null;
+            }
+
+            curProject = bufProj;
+            curProject.Path = fileName;
+
+            PushIntoHistory(curProject);
+
+            return curProject;
         }
 
         /// <summary>
@@ -75,23 +137,38 @@ namespace CleverMerge.Projects
         /// </summary>
         public void CloseProject()
         {
-            throw new System.NotImplementedException();
+            if (curProject.IsDirty)
+                SaveProject();
+
+            curProject = null;
         }
 
         /// <summary>
-        /// Save current project in the same location
+        /// Save current project in the same location.
+        /// If location was not specified earlier user will be asked for file name.
         /// </summary>
         public void SaveProject()
         {
-            throw new System.NotImplementedException();
+            if (string.IsNullOrEmpty(curProject.Path))
+                SaveProjectAs();
+
+            SerializationUtility.SerializeToFile(curProject.Path, curProject);
         }
 
         /// <summary>
-        /// Save current project in the specified location
+        /// Request user for file name and save current project in the specified location
         /// </summary>
         public void SaveProjectAs()
         {
-            throw new System.NotImplementedException();
+            var dialog = new SaveFileDialog();
+            dialog.Filter = "Clever merge project (*.cmp)|*.cmp";
+            dialog.OverwritePrompt = true;
+            var result = dialog.ShowDialog();
+
+            if (result == DialogResult.OK)
+                curProject.Path = dialog.FileName;
+
+            SerializationUtility.SerializeToFile(curProject.Path, curProject);
         }
 
         /// <summary>
@@ -99,7 +176,42 @@ namespace CleverMerge.Projects
         /// </summary>
         public Project CreateProject()
         {
-            throw new System.NotImplementedException();
+            if (curProject != null)
+                SaveProject();
+
+            var name = AskStringForm.Ask("Enter new project name", "New project name:");
+
+            curProject = new Project
+            {
+                Name = name
+            };
+
+            PushIntoHistory(curProject);
+            return curProject;
         }
+        
+        #endregion
+
+        #region Private methods
+
+        /// <summary>
+        /// Push specified project to history list
+        /// </summary>
+        /// <param name="curProject">Project to push to list</param>
+        private void PushIntoHistory(Project curProject)
+        {
+            recentProjects.Add(curProject);
+
+            if (HistoryChanged != null)
+                HistoryChanged(this, EventArgs.Empty);
+        }
+        
+        #endregion
+
+        #region Public events
+
+        public event EventHandler HistoryChanged;
+
+        #endregion
     }
 }

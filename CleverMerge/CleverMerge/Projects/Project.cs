@@ -10,43 +10,29 @@ namespace CleverMerge.Projects
     /// </summary>
     public class Project
     {
-        public List<Action> ChangeHistory
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        /// <summary>
+        /// List of actions made by user during editing project branches
+        /// </summary>
+        public List<Action> ChangeHistory { get; private set; }
 
         /// <summary>
         /// Project file name
         /// </summary>
-        public string Name
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public string Name { get; set; }
 
         /// <summary>
         /// Full path to project file name
         /// </summary>
-        public string Path
+        public string Path { get; set; }
+
+        /// <summary>
+        /// True if project was changed by user
+        /// </summary>
+        public bool IsDirty { get; set; }
+
+        public Project()
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
+            ChangeHistory = new List<Action>();
         }
     }
 }

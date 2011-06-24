@@ -24,7 +24,7 @@
   <Interface Name="CleverMerge.Core.ITree">
     <Position X="4.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAEAAAAgAAAgQAABAgAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <HashCode>AAAAEAAAAgAAggQAABAgAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
       <FileName>Core\ITree.cs</FileName>
     </TypeIdentifier>
   </Interface>
