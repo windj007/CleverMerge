@@ -58,6 +58,8 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.windowsTabs = new CleverMerge.GUI.WindowsTabs();
+            this.twoWayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.threeWayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -90,10 +92,12 @@
             // 
             // newToolStripMenuItem
             // 
+            this.newToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.twoWayMenuItem,
+            this.threeWayMenuItem});
             this.newToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("newToolStripMenuItem.Image")));
             this.newToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.newToolStripMenuItem.Text = "&New";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
@@ -292,6 +296,19 @@
             this.windowsTabs.Size = new System.Drawing.Size(962, 30);
             this.windowsTabs.TabIndex = 4;
             // 
+            // twoWayMenuItem
+            // 
+            this.twoWayMenuItem.Name = "twoWayMenuItem";
+            this.twoWayMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.twoWayMenuItem.Text = "Two-way comparison";
+            this.twoWayMenuItem.Click += new System.EventHandler(this.twoWayMenuItem_Click);
+            // 
+            // threeWayMenuItem
+            // 
+            this.threeWayMenuItem.Name = "threeWayMenuItem";
+            this.threeWayMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.threeWayMenuItem.Text = "Three-way comparison";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -342,6 +359,8 @@
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip;
         private GUI.WindowsTabs windowsTabs;
+        private System.Windows.Forms.ToolStripMenuItem twoWayMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem threeWayMenuItem;
     }
 }
 

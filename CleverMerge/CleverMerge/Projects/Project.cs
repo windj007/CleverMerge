@@ -19,7 +19,16 @@ namespace CleverMerge.Projects
         /// <summary>
         /// Project file name
         /// </summary>
-        public string Name { get; set; }
+        public string Name
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(Path))
+                    return "";
+
+                return System.IO.Path.GetFileNameWithoutExtension(Path);
+            }
+        }
 
         /// <summary>
         /// Full path to project file name

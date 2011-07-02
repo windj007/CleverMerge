@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Drawing;
 
 namespace CleverMerge.Core
 {
@@ -13,36 +14,24 @@ namespace CleverMerge.Core
         /// <summary>
         /// The name of the plugin. Dicplayed in plugins configuration window
         /// </summary>
-        string Name
-        {
-            get;
-            set;
-        }
+        string Name { get; }
 
         /// <summary>
         /// The icon of the plugin. Displayed in plugins configuration window
         /// </summary>
-        System.Drawing.Icon Icon
-        {
-            get;
-            set;
-        }
+        Icon Icon { get; }
 
         /// <summary>
         /// The description of the plugin. Displayed in plugins configuration window
         /// </summary>
-        string Description
-        {
-            get;
-            set;
-        }
+        string Description { get; }
 
         /// <summary>
         /// Build tree representation of the specified file.
         /// </summary>
         /// <remarks>Generally that tree is similar to abstract syntax tree of the program in that file.</remarks>
         /// <returns>FullTree representing file structure</returns>
-        ITree BuildFileTree(string fileName);
+        TreeBase BuildFileTree(string fileName);
 
         /// <summary>
         /// Check whether the file can be handled by that plugin
@@ -54,5 +43,19 @@ namespace CleverMerge.Core
         /// Initialize plugin
         /// </summary>
         void Initialize();
+
+        /// <summary>
+        /// Change specified trees to show differences between them
+        /// </summary>
+        /// <param name="left">A tree to compare</param>
+        /// <param name="right">A tree to compare</param>
+        void SymmetricCompareTrees(TreeBase left, TreeBase right);
+
+        /// <summary>
+        /// Change newTree to show the changes made in newTree in respect to baseTree
+        /// </summary>
+        /// <param name="baseTree">Ancestor tree</param>
+        /// <param name="newTree">Changed tree</param>
+        void AsymmetricCompareTrees(TreeBase baseTree, TreeBase newTree);
     }
 }

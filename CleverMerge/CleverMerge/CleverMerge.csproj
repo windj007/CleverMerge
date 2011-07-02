@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\BaseTreeBuilding\FolderTree.cs" />
+    <Compile Include="Core\BaseTreeBuilding\FolderTreeBuilder.cs" />
     <Compile Include="GUI\ComparisonFactory.cs" />
     <Compile Include="GUI\ComparisonBase.cs">
       <SubType>UserControl</SubType>
@@ -53,11 +55,17 @@
     <Compile Include="GUI\ComparisonBase.Designer.cs">
       <DependentUpon>ComparisonBase.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\ManySideComparison.cs">
+    <Compile Include="GUI\DirectoryViewer.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\ManySideComparison.Designer.cs">
-      <DependentUpon>ManySideComparison.cs</DependentUpon>
+    <Compile Include="GUI\DirectoryViewer.Designer.cs">
+      <DependentUpon>DirectoryViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ThreeWayComparison.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\ThreeWayComparison.Designer.cs">
+      <DependentUpon>ThreeWayComparison.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\ProjectForm.cs">
       <SubType>Form</SubType>
@@ -65,11 +73,11 @@
     <Compile Include="GUI\ProjectForm.Designer.cs">
       <DependentUpon>ProjectForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\TwoSideComparison.cs">
+    <Compile Include="GUI\TwoWayComparison.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\TwoSideComparison.Designer.cs">
-      <DependentUpon>TwoSideComparison.cs</DependentUpon>
+    <Compile Include="GUI\TwoWayComparison.Designer.cs">
+      <DependentUpon>TwoWayComparison.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\WindowsTabs.cs">
       <SubType>UserControl</SubType>
@@ -77,18 +85,17 @@
     <Compile Include="GUI\WindowsTabs.Designer.cs">
       <DependentUpon>WindowsTabs.cs</DependentUpon>
     </Compile>
+    <Compile Include="Core\BaseTreeBuilding\JustAFileTree.cs" />
     <Compile Include="Projects\Action.cs" />
     <Compile Include="Core\DisplayBase.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\ProjectTreeView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="GUI\ProjectTreeView.cs" />
     <Compile Include="GUI\ProjectTreeView.Designer.cs">
       <DependentUpon>ProjectTreeView.cs</DependentUpon>
     </Compile>
     <Compile Include="Core\IPlugin.cs" />
-    <Compile Include="Core\ITree.cs" />
+    <Compile Include="Core\TreeBase.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,18 +103,20 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Core\PluginManager.cs" />
-    <Compile Include="Projects\ManySideProject.cs" />
+    <Compile Include="Projects\ThreeWayProject.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Projects\Project.cs" />
     <Compile Include="Projects\ProjectManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Projects\TwoSideProject.cs" />
+    <Compile Include="Projects\TwoWayProject.cs" />
     <Compile Include="Utils\AskStringForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Utils\AskStringForm.Designer.cs">
       <DependentUpon>AskStringForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils\IdGenerator.cs" />
+    <Compile Include="Utils\Messages.cs" />
     <Compile Include="Utils\PathEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -115,11 +124,17 @@
       <DependentUpon>PathEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils\SerializationUtility.cs" />
+    <EmbeddedResource Include="GUI\DirectoryViewer.resx">
+      <DependentUpon>DirectoryViewer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\ProjectForm.resx">
       <DependentUpon>ProjectForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\TwoSideComparison.resx">
-      <DependentUpon>TwoSideComparison.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\ProjectTreeView.resx">
+      <DependentUpon>ProjectTreeView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\TwoWayComparison.resx">
+      <DependentUpon>TwoWayComparison.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\WindowsTabs.resx">
       <DependentUpon>WindowsTabs.cs</DependentUpon>
@@ -142,6 +157,7 @@
     <EmbeddedResource Include="Utils\PathEditor.resx">
       <DependentUpon>PathEditor.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Core\BaseTreeBuilding\BaseTree.cd" />
     <None Include="GUI\GUI.cd" />
     <None Include="Projects\Projects.cd" />
     <None Include="Properties\Settings.settings">
@@ -155,7 +171,12 @@
     </Compile>
     <None Include="Core\Core.cd" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="GUI\BaseViewers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folder_Closed.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

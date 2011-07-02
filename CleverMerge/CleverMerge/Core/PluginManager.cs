@@ -44,9 +44,9 @@ namespace CleverMerge.Core
         /// </summary>
         /// <param name="pluginDirrectory">The directory where plugins are situated</param>
         /// <returns>List of all loaded plugins</returns>
-        public System.Collections.Generic.IEnumerable<CleverMerge.Core.IPlugin> LoadPlugins(string pluginDirrectory)
+        public IEnumerable<IPlugin> LoadPlugins(string pluginDirrectory)
         {
-            throw new System.NotImplementedException();
+            return new List<IPlugin>();
         }
 
         /// <summary>
@@ -54,16 +54,20 @@ namespace CleverMerge.Core
         /// </summary>
         public void RefreshPlugins()
         {
-            throw new System.NotImplementedException();
+            
         }
 
         /// <summary>
         /// Choose the plugin that can handle the specified file
         /// </summary>
         /// <param name="fileName">The file that must be handled</param>
+        /// <returns>
+        /// Plugin instance for specified file.
+        /// If suitable plugin was not found the method returns null.
+        /// </returns>
         public IPlugin ChoosePluginForFile(string fileName)
         {
-            throw new System.NotImplementedException();
+            return null;
         }
     }
 }

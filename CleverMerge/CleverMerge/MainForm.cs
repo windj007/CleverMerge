@@ -37,9 +37,14 @@ namespace CleverMerge
 
         #region Menu events handlers
 
+        private void twoWayMenuItem_Click(object sender, EventArgs e)
+        {
+            CreateWindowForProject(ProjectManager.Instance.CreateTwoWayProject());
+        }
+
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CreateWindowForProject(ProjectManager.Instance.CreateProject());
+            
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
@@ -69,5 +74,6 @@ namespace CleverMerge
         }
         
         #endregion
+
     }
 }

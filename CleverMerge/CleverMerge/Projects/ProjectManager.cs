@@ -149,7 +149,7 @@ namespace CleverMerge.Projects
         /// </summary>
         public void SaveProject()
         {
-            if (string.IsNullOrEmpty(curProject.Path))
+            if (string.IsNullOrEmpty(curProject.Path) || !File.Exists(curProject.Path))
                 SaveProjectAs();
 
             SerializationUtility.SerializeToFile(curProject.Path, curProject);
@@ -172,21 +172,20 @@ namespace CleverMerge.Projects
         }
 
         /// <summary>
-        /// Create new project. Current project will be closed.
+        /// Create new two-side comparison project. Current project will be closed.
         /// </summary>
-        public Project CreateProject()
+        public Project CreateTwoWayProject()
         {
             if (curProject != null)
                 SaveProject();
 
-            var name = AskStringForm.Ask("Enter new project name", "New project name:");
-
-            curProject = new Project
+            curProject = new TwoWayProject
             {
-                Name = name
+                Path = "NewTwoSideProject"
             };
 
             PushIntoHistory(curProject);
+
             return curProject;
         }
         
