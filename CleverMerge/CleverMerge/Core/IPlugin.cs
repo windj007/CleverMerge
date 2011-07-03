@@ -11,6 +11,8 @@ namespace CleverMerge.Core
     /// </summary>
     public interface IPlugin
     {
+        #region Properties
+
         /// <summary>
         /// The name of the plugin. Dicplayed in plugins configuration window
         /// </summary>
@@ -25,6 +27,8 @@ namespace CleverMerge.Core
         /// The description of the plugin. Displayed in plugins configuration window
         /// </summary>
         string Description { get; }
+        
+        #endregion
 
         /// <summary>
         /// Build tree representation of the specified file.

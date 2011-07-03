@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using CleverMerge.Core.BaseTreeBuilding;
 
 namespace CleverMerge.Core
 {
@@ -10,10 +11,21 @@ namespace CleverMerge.Core
     /// </summary>
     public class PluginManager
     {
+        #region Private fields
+
         /// <summary>
         /// Current plugin manager instance
         /// </summary>
         private static PluginManager instance = null;
+
+        /// <summary>
+        /// Base plugin - FolderTreeBuilder
+        /// </summary>
+        private FolderTreeBuilder folderTreeBuilderPlugin = null;
+
+        #endregion
+
+        #region Public properties
 
         /// <summary>
         /// Current plugin manager instance
@@ -33,11 +45,16 @@ namespace CleverMerge.Core
         /// All loaded plugins
         /// </summary>
         public IEnumerable<IPlugin> Plugins { get; private set; }
+        
+        #endregion
 
         private PluginManager()
         {
-
+            folderTreeBuilderPlugin = new FolderTreeBuilder();
+            folderTreeBuilderPlugin.Initialize();
         }
+
+        #region Public methods
 
         /// <summary>
         /// Find and load all plugins in the specified directory
@@ -46,7 +63,9 @@ namespace CleverMerge.Core
         /// <returns>List of all loaded plugins</returns>
         public IEnumerable<IPlugin> LoadPlugins(string pluginDirrectory)
         {
-            return new List<IPlugin>();
+            Plugins = new List<IPlugin>();
+
+            return Plugins;
         }
 
         /// <summary>
@@ -54,7 +73,7 @@ namespace CleverMerge.Core
         /// </summary>
         public void RefreshPlugins()
         {
-            
+
         }
 
         /// <summary>
@@ -67,7 +86,14 @@ namespace CleverMerge.Core
         /// </returns>
         public IPlugin ChoosePluginForFile(string fileName)
         {
-            return null;
+            var suitable = Plugins.FirstOrDefault((plug) => plug.IsYourFile(fileName));
+
+            if (suitable != null)
+                return suitable;
+
+            return folderTreeBuilderPlugin;
         }
+        
+        #endregion
     }
 }

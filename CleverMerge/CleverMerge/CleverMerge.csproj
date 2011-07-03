@@ -90,7 +90,9 @@
     <Compile Include="Core\DisplayBase.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\ProjectTreeView.cs" />
+    <Compile Include="GUI\ProjectTreeView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="GUI\ProjectTreeView.Designer.cs">
       <DependentUpon>ProjectTreeView.cs</DependentUpon>
     </Compile>
