@@ -38,6 +38,9 @@
             this.treeView.Name = "treeView";
             this.treeView.Size = new System.Drawing.Size(271, 435);
             this.treeView.TabIndex = 0;
+            this.treeView.AfterCollapse += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterCollapse);
+            this.treeView.AfterExpand += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterExpand);
+            this.treeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
             // 
             // ProjectTreeView
             // 

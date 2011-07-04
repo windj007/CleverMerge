@@ -91,5 +91,46 @@ namespace CleverMerge.GUI
         }
         
         #endregion
+
+        #region Private methods
+
+        private void treeView_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            if (SelectedTreeChanged != null)
+                SelectedTreeChanged(this, EventArgs.Empty);
+        }
+
+        private void treeView_AfterExpand(object sender, TreeViewEventArgs e)
+        {
+            if (NodeExpanded != null)
+                NodeExpanded(this, new TreeEventArgs(e.Node as TreeBase));
+        }
+
+        private void treeView_AfterCollapse(object sender, TreeViewEventArgs e)
+        {
+            if (NodeCollapsed != null)
+                NodeCollapsed(this, new TreeEventArgs(e.Node as TreeBase));
+        }
+
+        #endregion
+
+        #region Public events
+
+        /// <summary>
+        /// Occurs when selected node changes.
+        /// </summary>
+        public event EventHandler SelectedTreeChanged;
+
+        /// <summary>
+        /// Occurs when node is collapsed.
+        /// </summary>
+        public event EventHandler<TreeEventArgs> NodeCollapsed;
+
+        /// <summary>
+        /// Occurs when node is expanded.
+        /// </summary>
+        public event EventHandler<TreeEventArgs> NodeExpanded;
+
+        #endregion
     }
 }

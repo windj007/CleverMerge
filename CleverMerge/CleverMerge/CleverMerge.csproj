@@ -73,6 +73,7 @@
     <Compile Include="GUI\ProjectForm.Designer.cs">
       <DependentUpon>ProjectForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\TreeEventArgs.cs" />
     <Compile Include="GUI\TwoWayComparison.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -159,6 +160,7 @@
     <EmbeddedResource Include="Utils\PathEditor.resx">
       <DependentUpon>PathEditor.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="app.config" />
     <None Include="Core\BaseTreeBuilding\BaseTree.cd" />
     <None Include="GUI\GUI.cd" />
     <None Include="Projects\Projects.cd" />

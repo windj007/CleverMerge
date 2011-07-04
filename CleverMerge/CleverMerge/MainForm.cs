@@ -8,6 +8,8 @@ using System.Text;
 using System.Windows.Forms;
 using CleverMerge.GUI;
 using CleverMerge.Projects;
+using CleverMerge.Core;
+using CleverMerge.Properties;
 
 namespace CleverMerge
 {
@@ -16,6 +18,8 @@ namespace CleverMerge
         public MainForm()
         {
             InitializeComponent();
+
+            PluginManager.Instance.LoadPlugins(Settings.Default.PluginsDir);
         }
 
         #region Private methods
